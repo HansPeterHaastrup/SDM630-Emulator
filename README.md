@@ -115,3 +115,11 @@ A few highlights:
 See the Arduino sketch supplied in the repo.
 You will need the MQTT libary 'PubSubClient' by Nick O'Leary installed to compile this project.
 Adjust the section in 'User definitions' accordingly.
+
+
+## Getting it all to work
+There are many steps to get this thing to work. I recommend first installing the metering node and getting data flowing into the Home-Assistant. This should be fairly straight forward if you have used ESPHome before.
+When the node ide running you will have to look at the MQTT part. For this I have found the program [MQTT Explorer](http://mqtt-explorer.com/) extremely helpful. by using this and connecting to your MQTT Broker you can see the data available on different topics. I am by no means an expert on MQTT but I could easily see what was going on.
+Next, it's time to set up the receiving node. Please bear in mind that this project as of now is made for Deye inverters. Your inverter might ask for different registers that I haven't relayed through this method. YMMW.
+Using the debug prints in the arduino sketch can prove extremely helpful. Start with making the sensor see the updates on your sensor topic in the MQTT broker. When that is running properly you can add the RS-485 communication with the inverter.
+Good luck :)

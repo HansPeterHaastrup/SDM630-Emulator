@@ -15,16 +15,13 @@ This project emulates the SDM630 so the home-assistant data can be retained whil
 ## Hardware
 The hardware required is the same on each end - An ESP8266 with RS-485 interface. I have opted to use a cheap interface found on ebay and a NodeMCU. I have made a little enclosure for it. Powering the sensor in each end is done by a small USB power supply. nothing fancy.
 
-![RS-485 Interface](pictures/RS-485_Interface.jpg | width=100)
-
+<img src="pictures/RS-485_Interface.jpg" width="40%" height="40%">
 
 The enclosure have 3 small holes for screw terminals, from left to right the connections are GND,B,A.
+<img src="pictures/SensorConnections.jpg" width="40%" height="40%">
+I have added the 120Ohm resistor but I'm not completely sure it's needed (nor the GND wire but hey, it works!)
 
-![SensorConnections](https://github.com/HansPeterHaastrup/SDM630-Emulator/pictures/Sensor_Connections.jpg)
-
-
-
-## Firmware
+## Firmware for metering node
 For the sensor in the metering end I have used ESPHome. Create a standard sensor and add the following:
 ```
 mqtt:
@@ -109,8 +106,17 @@ sensor:
 This will make all the data available in Home-assistant.
 I few highlights:
 
-### The MQTT section - by adding this section you will get ALL values sent to the MQTT broker as well. it IS possible to script just the few registers needed for the emulator to work but this is by far the easiest solution.
-### The UART section - On the nodeMCU pin 4 and 5 works fine. YMMW
-### Last line - Update interval. The inverter queries the meter every second. While it is possible to get the sensor to answer faster by requesting less information I rather like the datapoints here. So far the 2 seconds seem to work just great.
-### The names of the phases. I have chosen the R,S,T naming convention (Root-Stem-Top) but you cah choose whichever you want. You just have to update the names in the receiving end as well if you do.
+### The MQTT section 
+by adding this section you will get ALL values sent to the MQTT broker as well. it IS possible to script just the few registers needed for the emulator to work but this is by far the easiest solution.
+### The UART section
+On the nodeMCU pin 4 and 5 works fine. YMMW
+### Last line 
+Update interval. The inverter queries the meter every second. While it is possible to get the sensor to answer faster by requesting less information I rather like the datapoints here. So far the 2 seconds seem to work just great.
+### The names of the phases. 
+I have chosen the R,S,T naming convention (Root-Stem-Top) but you cah choose whichever you want. You just have to update the names in the receiving end as well if you do.
 
+
+## Firmware for inverter node
+See the Arduino sketch supplied in the repo.
+You will need the MQTT libary 'PubSubClient' by Nick O'Leary installed to compile this project.
+Adjust the section in 'User definitions' accordingly.

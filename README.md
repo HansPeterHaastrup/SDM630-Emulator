@@ -15,7 +15,7 @@ This project emulates the SDM630 so the home-assistant data can be retained whil
 ## Hardware
 The hardware required is the same on each end - An ESP8266 with RS-485 interface. I have opted to use a cheap interface found on ebay and a NodeMCU. I have made a little enclosure for it. Powering the sensor in each end is done by a small USB power supply. nothing fancy.
 
-![RS-485 Interface](pictures/RS-485_Interface.jpg)
+![RS-485 Interface](pictures/RS-485_Interface.jpg | width=100)
 
 
 The enclosure have 3 small holes for screw terminals, from left to right the connections are GND,B,A.

@@ -104,16 +104,11 @@ sensor:
     update_interval: 2s
 ```
 This will make all the data available in Home-assistant.
-I few highlights:
-
-### The MQTT section 
-by adding this section you will get ALL values sent to the MQTT broker as well. it IS possible to script just the few registers needed for the emulator to work but this is by far the easiest solution.
-### The UART section
-On the nodeMCU pin 4 and 5 works fine. YMMW
-### Last line 
-Update interval. The inverter queries the meter every second. While it is possible to get the sensor to answer faster by requesting less information I rather like the datapoints here. So far the 2 seconds seem to work just great.
-### The names of the phases. 
-I have chosen the R,S,T naming convention (Root-Stem-Top) but you cah choose whichever you want. You just have to update the names in the receiving end as well if you do.
+A few highlights:
+1. The MQTT section. by adding this section you will get ALL values sent to the MQTT broker as well. it IS possible to script just the few registers needed for the emulator to work but this is by far the easiest solution.
+2. The UART section. On the nodeMCU pin 4 and 5 works fine. YMMW
+3. Last line. Update interval. The inverter queries the meter every second. While it is possible to get the sensor to answer faster by requesting less information I rather like the datapoints here. So far the 2 seconds seem to work just great.
+4. The names of the phases. I have chosen the R,S,T naming convention (Root-Stem-Top) but you cah choose whichever you want. You just have to update the names in the receiving end as well if you do.
 
 
 ## Firmware for inverter node
